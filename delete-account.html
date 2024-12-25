@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Account</title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .delete-button {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .delete-button:hover {
+      background-color: #e60000;
+    }
+
+    .play-store-link {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #007bff;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .play-store-link:hover {
+      color: #0056b3;
+    }
+
+    .play-store-link img {
+      width: 150px;
+      margin-top: 10px;
+    }
+
+    .message {
+      margin-top: 20px;
+      color: #e60000;
+      font-size: 16px;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+    <h1>Delete Your Account</h1>
+    <p>
+        We're sorry to see you go. If you proceed, your account will be permanently deleted, and you will lose all your data.
+    </p>
+    <button class="delete-button" onclick="showMessage()">Delete Account</button>
+    <p class="message" id="confirmationMessage">
+        Your account has been deleted successfully. Thank you for using our app!
+    </p>
+    <a class="play-store-link" href="https://play.google.com/store/apps" target="_blank">
+        Re-download our app from Play Store
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play Store">
+    </a>
+</div>
+
+<script>
+    function showMessage() {
+      const message = document.getElementById("confirmationMessage");
+      message.style.display = "block";
+      setTimeout(() => {
+        alert("Your account has been deleted.");
+        message.style.display = "none"; // Hide the message after alert
+      }, 3000); // Message remains visible for 3 seconds
+    }
+  </script>
+</body>
+</html>
