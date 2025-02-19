@@ -24,7 +24,65 @@
     <!-- Favicon and Touch Icons  -->
 <!--    <link rel="shortcut icon" href="images/logo/favicon.png">-->
     <link rel="shortcut icon" href="images/logo/app_logo.png">
-<link rel="apple-touch-icon-precomposed" href="images/logo/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="images/logo/favicon.png">
+
+    <!-- Firebase SDK -->
+    <script type="module">
+      // Import Firebase SDK
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+      // Your Firebase configuration (Replace with your actual config)
+      const firebaseConfig = {
+        apiKey: "AIzaSyDPoGJv_4NzstYRArEtG7kFgF5Od4H_a00",
+        authDomain: "laviora-425ba.firebaseapp.com",
+        projectId: "laviora-425ba",
+        storageBucket: "laviora-425ba.firebasestorage.app",
+        messagingSenderId: "1051275517400",
+        appId: "1:1051275517400:web:6feb76383a3c81576226ad"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      // Function to fetch data from Firestore
+      async function fetchData() {
+        const docRef = doc(db, "users", "4R1S3DBt80hFYyTfeWkY0E3t4Y82");
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          alert(`User: ${docSnap.data().first_name}, Email: ${docSnap.data().email}`);
+        } else {
+          alert("No such document!");
+        }
+      }
+
+      async function fetchProducts() {
+      try{
+        const querySnapshot = await getDocs(collection(db, "product"));
+
+          if (!querySnapshot.empty) {
+            let productList = "Product List:\n";
+            querySnapshot.forEach((doc) => {
+              const data = doc.data();
+              productList += `\nName: ${data.name}\nPrice: ${data.mrp}\nCategory: ${data.categoryId}`;
+            });
+
+            alert(productList); // Display product list
+          } else {
+            alert("No products found!");
+          }
+      } catch(e) {
+            console.error("Error fetching products:", e);
+            alert("Error fetching products! Check the console for details.");
+        }
+      }
+
+      // Expose functions to the window (so they can be used in onclick events)
+      window.onload = fetchData;
+      window.onload = fetchProducts;
+    </script>
+
 
 </head>
 
@@ -83,7 +141,6 @@
                         <a href="index.html" class="logo-header">
 <!--                            <img src="images/logo/logo.svg" alt="logo" class="logo">-->
                              <img src="images/logo/app_logo.png" alt="logo" class="logo" height="50" width="50">
-                            <!-- <span alt="logo" class="logo">Wafira</span> -->
                         </a>
                     </div>
                     <div class="col-xl-6 tf-md-hidden">
