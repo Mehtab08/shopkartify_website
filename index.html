@@ -19,11 +19,10 @@
    <link rel="stylesheet" href="css/bootstrap.min.css">
    <link rel="stylesheet" href="css/swiper-bundle.min.css">
    <link rel="stylesheet" href="css/animate.css">
-   <link rel="stylesheet"type="text/css" href="css/styles.css"/>
+   <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 
     <!-- Favicon and Touch Icons  -->
-<!--    <link rel="shortcut icon" href="images/logo/favicon.png">-->
-    <link rel="shortcut icon" href="images/logo/app_logo.png">
+    <link rel="shortcut icon" href="images/logo/favicon.png">
     <link rel="apple-touch-icon-precomposed" href="images/logo/favicon.png">
 
     <!-- Firebase SDK -->
@@ -45,17 +44,6 @@
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
-
-      // Function to fetch data from Firestore
-      async function fetchData() {
-        const docRef = doc(db, "users", "4R1S3DBt80hFYyTfeWkY0E3t4Y82");
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          alert(`User: ${docSnap.data().first_name}, Email: ${docSnap.data().email}`);
-        } else {
-          alert("No such document!");
-        }
-      }
 
       async function fetchProducts() {
       try{
@@ -139,8 +127,7 @@
                     </div>
                     <div class="col-xl-3 col-md-4 col-6">
                         <a href="index.html" class="logo-header">
-<!--                            <img src="images/logo/logo.svg" alt="logo" class="logo">-->
-                             <img src="images/logo/app_logo.png" alt="logo" class="logo" height="50" width="50">
+                            <img src="images/logo/logo.svg" alt="logo" class="logo">
                         </a>
                     </div>
                     <div class="col-xl-6 tf-md-hidden">
@@ -1826,8 +1813,7 @@
                                 <div class="footer-infor">
                                     <div class="footer-logo">
                                         <a href="index.html">
-<!--                                            <img src="images/logo/logo.svg" alt="">-->
-                                            <img src="images/logo/app_logo.png" alt="" height="80" width="80">
+                                            <img src="images/logo/logo.svg" alt="">
                                         </a>
                                     </div>
                                     <ul>
